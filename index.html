@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio – Étudiant BTS SIO</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-[#0A192F] text-gray-100">
+
+  <!-- HEADER -->
+  <header class="bg-[#0D1B2A]/90 backdrop-blur-md shadow fixed w-full z-50 border-b border-yellow-400/30">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-yellow-400">Mon Portfolio</h1>
+      <nav class="space-x-6 hidden md:flex">
+        <a href="#accueil" class="hover:text-yellow-400">Accueil</a>
+        <a href="#about" class="hover:text-yellow-400">À propos</a>
+        <a href="#experience" class="hover:text-yellow-400">Expérience</a>
+        <a href="#projects" class="hover:text-yellow-400">Projets</a>
+        <a href="#skills" class="hover:text-yellow-400">Compétences</a>
+        <a href="#e5" class="hover:text-yellow-400">Épreuve E5</a>
+        <a href="#veille" class="hover:text-yellow-400">Veille</a>
+        <a href="#contact" class="hover:text-yellow-400">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ACCUEIL -->
+  <section id="accueil" class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-[#001F3F] via-[#003566] to-[#0A192F] text-white text-center px-6">
+    <h2 class="text-4xl md:text-6xl font-bold mb-4">Salut 👋 je suis <span class="text-yellow-400">christ étudiant en BTS SIO</span></h2>
+    <p class="text-lg md:text-xl mb-8 max-w-2xl text-gray-200">Passionné par le développement, la technologie et la création de solutions informatiques efficaces.</p>
+    <a href="#projects" class="bg-yellow-400 text-[#001F3F] px-6 py-3 rounded-full font-semibold hover:bg-yellow-300 transition">Voir mes projets</a>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="about" class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold text-center mb-10 text-yellow-400">À propos de moi</h2>
+    <div class="md:flex items-center gap-10">
+      <img src="https://via.placeholder.com/300" alt="photo" class="rounded-2xl shadow-lg mx-auto md:mx-0 mb-6 md:mb-0 border border-yellow-400/40">
+      <div>
+        <p class="text-lg leading-relaxed text-gray-300">Je suis étudiant en BTS Services Informatiques aux Organisations (SIO), option <strong>SLAM</strong>. J’aime créer des sites web, développer des applications et apprendre de nouvelles technologies.</p>
+        <p class="mt-4 text-lg leading-relaxed text-gray-400">Mon objectif est de devenir développeur full-stack et de continuer à évoluer dans le domaine du numérique.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPÉRIENCE -->
+  <section id="experience" class="bg-[#112240] py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12 text-yellow-400">Mon Parcours & Expérience</h2>
+      <div class="relative border-l-4 border-yellow-400 pl-8 space-y-12">
+
+        <!-- Bac SN -->
+        <div class="bg-[#0A192F] p-6 rounded-2xl shadow hover:shadow-yellow-400/30 transition">
+          <span class="text-sm text-yellow-300 font-semibold">📅 2022 - 2025</span>
+          <h3 class="text-2xl font-bold text-yellow-400 mt-2">Baccalauréat Sciences du Numérique (SN)</h3>
+          <p class="mt-3 text-gray-300">Formation axée sur les bases de l’électronique, des réseaux et du développement.  
+          Elle m’a permis d’acquérir des compétences solides en informatique, en logique et en maintenance de systèmes.</p>
+        </div>
+
+        <!-- BTS SIO -->
+        <div class="bg-[#0A192F] p-6 rounded-2xl shadow hover:shadow-yellow-400/30 transition">
+          <span class="text-sm text-yellow-300 font-semibold">📅 2025 - 2027</span>
+          <h3 class="text-2xl font-bold text-yellow-400 mt-2">BTS Services Informatiques aux Organisations (Option SLAM)</h3>
+          <p class="mt-3 text-gray-300">Actuellement en BTS SIO, j’approfondis mes connaissances en développement logiciel, gestion de base de données, conception d’applications web et sécurité des systèmes.  
+          Je travaille également sur des projets professionnels pour préparer l’épreuve E5.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETS -->
+  <section id="projects" class="py-20 bg-[#0A192F]">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-10 text-yellow-400">Mes Projets</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-[#112240] rounded-2xl shadow-lg hover:shadow-yellow-500/30 transition p-6">
+          <img src="https://via.placeholder.com/400x200" alt="Projet 1" class="rounded-xl mb-4 border border-yellow-400/30">
+          <h3 class="text-xl font-semibold mb-2 text-yellow-300">Projet 1 – Application Web</h3>
+          <p class="text-gray-400 mb-4">Application PHP/MySQL avec tableau de bord administrateur et espace utilisateurRéalisation d’un site web collaboratif dans le cadre du BTS : conception d’un site de présentation d’entreprise avec pages dynamiques et design responsive. Ce projet m’a permis de mieux comprendre la gestion d’équipe, la répartition des tâches et l’organisation d’un projet complet..</p>
+        </div>
+        <div class="bg-[#112240] rounded-2xl shadow-lg hover:shadow-yellow-500/30 transition p-6">
+          <img src="https://via.placeholder.com/400x200" alt="Projet 2" class="rounded-xl mb-4 border border-yellow-400/30">
+          <h3 class="text-xl font-semibold mb-2 text-yellow-300">Projet 2 – Site Vitrine</h3>
+          <p class="text-gray-400 mb-4">Création d’un site vitrine responsive en HTML, CSS et JavaScript pour une entreprise locale.</p>
+        </div>
+        <div class="bg-[#112240] rounded-2xl shadow-lg hover:shadow-yellow-500/30 transition p-6">
+          <img src="https://via.placeholder.com/400x200" alt="Projet 3" class="rounded-xl mb-4 border border-yellow-400/30">
+          <h3 class="text-xl font-semibold mb-2 text-yellow-300">Projet 3 – API Python</h3>
+          <p class="text-gray-400 mb-4">Développement d’une API REST en Python Flask pour gérer des données utilisateurs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section id="skills" class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold text-center mb-10 text-yellow-400">Compétences</h2>
+    <div class="grid md:grid-cols-3 gap-6 text-center">
+      <div class="bg-[#0A192F] rounded-2xl shadow p-6 hover:shadow-yellow-500/30 transition">
+        <h3 class="font-semibold text-xl mb-2 text-yellow-300">Développement Web</h3>
+        <p class="text-gray-400 mb-2">• Maîtrise du HTML5, CSS3 et JavaScript</p>
+        <p class="text-gray-400 mb-2">• Développement de sites dynamiques en PHP/MySQL</p>
+        <p class="text-gray-400">• Utilisation de frameworks (Tailwind, Bootstrap)</p>
+      </div>
+      <div class="bg-[#0A192F] rounded-2xl shadow p-6 hover:shadow-yellow-500/30 transition">
+        <h3 class="font-semibold text-xl mb-2 text-yellow-300">Programmation</h3>
+        <p class="text-gray-400 mb-2">• Développement en Python, Java, C#</p>
+        <p class="text-gray-400 mb-2">• Gestion de bases de données avec SQL</p>
+        <p class="text-gray-400">• Utilisation de Git/GitHub pour le versionnement</p>
+      </div>
+      <div class="bg-[#0A192F] rounded-2xl shadow p-6 hover:shadow-yellow-500/30 transition">
+        <h3 class="font-semibold text-xl mb-2 text-yellow-300">Systèmes & Réseaux</h3>
+        <p class="text-gray-400 mb-2">• Configuration de serveurs Linux & Windows</p>
+        <p class="text-gray-400 mb-2">• Mise en place de machines virtuelles (VMware, VirtualBox)</p>
+        <p class="text-gray-400">• Sécurité réseau et dépannage</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÉPREUVE E5 -->
+  <section id="e5" class="bg-[#112240] py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-10 text-yellow-400">Épreuve E5 – Conception et Maintenance de Solutions Informatiques</h2>
+      <p class="text-lg text-gray-300 leading-relaxed text-center max-w-4xl mx-auto">
+        L’épreuve E5 du BTS SIO évalue la capacité de l’étudiant à <strong>concevoir, développer et maintenir une solution logicielle</strong> répondant à un besoin réel d’entreprise.  
+        Elle repose sur deux projets professionnels menés durant la formation (stages ou projets personnels), accompagnés de documentations techniques et d’une soutenance orale.
+      </p>
+    </div>
+  </section>
+
+  <!-- VEILLE TECHNOLOGIQUE -->
+  <section id="veille" class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold text-center mb-10 text-yellow-400">Veille Technologique</h2>
+    <div class="bg-[#0A192F] rounded-2xl shadow-lg p-6 text-gray-300 max-w-4xl mx-auto">
+      <h3 class="text-2xl text-yellow-300 font-semibold mb-4">Sujet : L’intelligence artificielle dans le développement web</h3>
+      <p class="mb-3">L’IA révolutionne la manière de concevoir et d’optimiser les sites web. Des outils comme ChatGPT, GitHub Copilot ou Figma AI permettent d’automatiser certaines tâches et d’améliorer la productivité.</p>
+      <p class="mb-3">Cette veille m’a permis de mieux comprendre l’impact de l’IA sur les métiers du développement et d’apprendre à en tirer parti dans mes projets.</p>
+      <p>Sources principales : <strong>ZDNet, Journal du Net, GitHub Blog, OpenAI</strong>.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="bg-gradient-to-r from-[#003566] to-[#001D3D] text-white py-20">
+    <div class="max-w-3xl mx-auto text-center px-6">
+      <h2 class="text-3xl font-bold mb-6 text-yellow-400">Contact</h2>
+      <p class="mb-4 text-lg text-gray-200">Tu veux me contacter pour un stage, une alternance ou un projet ?</p>
+      <p class="mb-2 text-lg">📧 <a href="mailto:cekoffi2007@gmail.com" class="text-yellow-300 hover:underline">cekoffi2007@gmail.com</a></p>
+      <p class="mb-8 text-lg">📞 06 50 61 38 94</p>
+      <a href="mailto:cekoffi2007@gmail.com" class="bg-yellow-400 text-[#001F3F] px-6 py-3 rounded-full font-semibold hover:bg-yellow-300 transition">Me contacter</a>
+      
+      <!-- BOUTON CV -->
+      <div class="mt-6">
+        <a href="CV_Cekoffi.pdf" download class="bg-yellow-400 text-[#001F3F] px-6 py-3 rounded-full font-semibold hover:bg-yellow-300 transition">
+          Télécharger mon CV
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0D1B2A] text-gray-400 text-center py-6 border-t border-yellow-400/20">
+    <p>&copy; 2025 – Mon Portfolio BTS SIO. Tous droits réservés.</p>
+  </footer>
+
+</body>
+</html>
+
