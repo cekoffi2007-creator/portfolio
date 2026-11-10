@@ -1,174 +1,442 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio – Étudiant BTS SIO</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Poppins', sans-serif; }
-    html { scroll-behavior: smooth; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio de Christ, étudiant en BTS SIO. Parcours, projets, compétences, épreuve E5 et veille technologique.">
+<title>Christ — Portfolio BTS SIO</title>
+<style>
+:root{--bg:#090d16;--panel:#111827;--panel2:#151f30;--text:#f4f6fb;--muted:#a7b1c2;--gold:#f5c84c;--gold2:#ffe08a;--line:rgba(255,255,255,.10);--shadow:0 20px 60px rgba(0,0,0,.28)}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 80% 0%,#1c2940 0,transparent 32%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1120px,calc(100% - 40px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(9,13,22,.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:1.3rem;font-weight:900;letter-spacing:.08em}.logo span{color:var(--gold)}
+.navlinks{display:flex;align-items:center;gap:22px}.navlinks a{font-size:.88rem;color:var(--muted);transition:.2s}.navlinks a:hover,.navlinks a.active{color:var(--gold)}
+.menu-btn{display:none;background:transparent;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:8px 12px}
+.hero{min-height:660px;display:grid;grid-template-columns:1.25fr .75fr;align-items:center;gap:55px;padding:85px 0}
+.eyebrow{color:var(--gold);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.76rem}
+h1{font-size:clamp(3rem,7vw,5.8rem);line-height:1.02;letter-spacing:-.06em;margin:18px 0}
+h1 span,.accent{color:var(--gold)}
+.lead{font-size:1.15rem;color:var(--muted);max-width:650px}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:12px;font-weight:800;border:1px solid var(--line);transition:.2s}
+.btn.primary{background:var(--gold);color:#171717;border-color:var(--gold)}.btn:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(245,200,76,.15)}
+.hero-card{background:linear-gradient(145deg,#1c2940,#101725);border:1px solid rgba(245,200,76,.28);border-radius:28px;padding:30px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero-card:after{content:"";position:absolute;width:210px;height:210px;border-radius:50%;background:rgba(245,200,76,.12);filter:blur(2px);right:-90px;top:-90px}
+.avatar{width:100px;height:100px;border-radius:28px;background:linear-gradient(135deg,var(--gold),#fff0b8);color:#151515;display:grid;place-items:center;font-size:2.7rem;font-weight:950;margin-bottom:24px}
+.hero-card h3{font-size:1.45rem;margin:0 0 8px}.hero-card p{color:var(--muted);margin:0}
+.quick{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
+.quick div{background:rgba(255,255,255,.05);border:1px solid var(--line);padding:13px;border-radius:14px}
+.quick strong{display:block;color:var(--gold);font-size:1.1rem}.quick small{color:var(--muted)}
+section{padding:90px 0;border-top:1px solid var(--line);scroll-margin-top:75px}
+.section-head{margin-bottom:36px}.section-head .eyebrow{margin-bottom:8px}
+h2{font-size:clamp(2rem,4vw,3rem);line-height:1.12;letter-spacing:-.04em;margin:0 0 12px}
+.section-head p{color:var(--muted);max-width:720px;margin:0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:linear-gradient(145deg,var(--panel),#0e1522);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow)}
+.card h3{margin:8px 0 10px;font-size:1.15rem}.card p{color:var(--muted);margin:0}
+.icon{width:42px;height:42px;border-radius:13px;background:rgba(245,200,76,.12);color:var(--gold);display:grid;place-items:center;font-size:1.2rem;font-weight:900}
+.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+.highlight{border-left:3px solid var(--gold);padding:4px 0 4px 18px;color:var(--muted);margin:20px 0}
+.tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.tag{font-size:.82rem;padding:7px 11px;border-radius:99px;background:rgba(245,200,76,.1);color:var(--gold2);border:1px solid rgba(245,200,76,.2)}
+.timeline{display:grid;gap:16px}.time-item{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}
+.time-item time{color:var(--gold);font-weight:850}.time-item p{margin:5px 0 0;color:var(--muted)}
+.project-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.project-number{font-size:2rem;font-weight:900;color:rgba(245,200,76,.45)}
+.skill{margin:20px 0}.skill-label{display:flex;justify-content:space-between;margin-bottom:8px}.skill-label span:last-child{color:var(--gold);font-size:.85rem}.bar{height:8px;background:#263246;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;width:70%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:99px}
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px}
+.info{padding:20px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid var(--line)}.info strong{display:block;color:var(--gold);margin-bottom:6px}
+.steps{counter-reset:step;display:grid;gap:12px;margin-top:22px}.step{counter-increment:step;display:flex;gap:14px;align-items:flex-start}.step:before{content:counter(step);flex:0 0 32px;height:32px;border-radius:10px;background:var(--gold);color:#161616;font-weight:900;display:grid;place-items:center}
+.source-list{display:grid;gap:10px;margin-top:18px}.source-list a{color:var(--gold2);text-decoration:underline;text-underline-offset:3px}
+.contact{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}.contact-panel{background:linear-gradient(145deg,#1c2940,#101725);border:1px solid rgba(245,200,76,.25);border-radius:24px;padding:30px}
+.contact-panel p{color:var(--muted)}.contact-line{padding:13px 0;border-bottom:1px solid var(--line);color:var(--muted)}.contact-line b{color:var(--text);display:block}
+footer{padding:30px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}footer .container{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.note{font-size:.85rem;color:var(--muted);margin-top:16px}
+@media(max-width:850px){.navlinks{display:none;position:absolute;top:76px;left:0;right:0;padding:18px 24px 24px;background:#0c1220;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu-btn{display:block}.hero{grid-template-columns:1fr;min-height:auto;padding:70px 0}.hero-card{max-width:520px}.grid{grid-template-columns:1fr 1fr}.about-layout,.contact{grid-template-columns:1fr}}
+@media(max-width:580px){.container{width:min(100% - 28px,1120px)}section{padding:68px 0}.grid,.info-grid{grid-template-columns:1fr}.time-item{grid-template-columns:1fr;gap:4px}.hero{padding:55px 0}.hero-card{padding:23px}h1{font-size:3.2rem}}
+</style>
 </head>
-<body class="bg-[#0A192F] text-gray-100">
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#accueil">CHRIST<span>.</span></a>
+    <nav class="navlinks" id="navlinks" aria-label="Navigation principale">
+      <a href="#accueil">Accueil</a><a href="#apropos">À propos</a><a href="#parcours">Parcours</a>
+      <a href="#projets">Projets</a><a href="#competences">Compétences</a><a href="#e5">Épreuve E5</a>
+      <a href="#veille">Veille</a><a href="#contact">Contact</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">☰</button>
+  </div>
+</header>
 
-  <!-- HEADER -->
-  <header class="bg-[#0D1B2A]/90 backdrop-blur-md shadow fixed w-full z-50 border-b border-yellow-400/30">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold text-yellow-400">Mon Portfolio</h1>
-      <nav class="space-x-6 hidden md:flex">
-        <a href="#accueil" class="hover:text-yellow-400">Accueil</a>
-        <a href="#about" class="hover:text-yellow-400">À propos</a>
-        <a href="#experience" class="hover:text-yellow-400">Expérience</a>
-        <a href="#projects" class="hover:text-yellow-400">Projets</a>
-        <a href="#skills" class="hover:text-yellow-400">Compétences</a>
-        <a href="#e5" class="hover:text-yellow-400">Épreuve E5</a>
-        <a href="#veille" class="hover:text-yellow-400">Veille</a>
-        <a href="#contact" class="hover:text-yellow-400">Contact</a>
-      </nav>
+<main>
+<section class="hero container" id="accueil" style="border:0">
+  <div>
+    <div class="eyebrow">Portfolio · BTS Services Informatiques aux Organisations</div>
+    <h1>Salut, je suis<br><span>Christ.</span></h1>
+    <p class="lead">Étudiant en BTS SIO, je développe mes compétences dans le numérique, la programmation et les services informatiques. Bienvenue dans mon univers.</p>
+    <div class="actions">
+      <a class="btn primary" href="#projets">Découvrir mes projets ↗</a>
+      <a class="btn" href="#apropos">En savoir plus</a>
     </div>
-  </header>
-
-  <!-- ACCUEIL -->
-  <section id="accueil" class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-[#001F3F] via-[#003566] to-[#0A192F] text-white text-center px-6">
-    <h2 class="text-4xl md:text-6xl font-bold mb-4">Salut 👋 je suis <span class="text-yellow-400">christ étudiant en BTS SIO</span></h2>
-    <p class="text-lg md:text-xl mb-8 max-w-2xl text-gray-200">Passionné par le développement, la technologie et la création de solutions informatiques efficaces.</p>
-    <a href="#projects" class="bg-yellow-400 text-[#001F3F] px-6 py-3 rounded-full font-semibold hover:bg-yellow-300 transition">Voir mes projets</a>
-  </section>
-
-  <!-- À PROPOS -->
-  <section id="about" class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-bold text-center mb-10 text-yellow-400">À propos de moi</h2>
-    <div class="md:flex items-center gap-10">
-      <img src="https://via.placeholder.com/300" alt="photo" class="rounded-2xl shadow-lg mx-auto md:mx-0 mb-6 md:mb-0 border border-yellow-400/40">
-      <div>
-        <p class="text-lg leading-relaxed text-gray-300">Je suis étudiant en BTS Services Informatiques aux Organisations (SIO), option <strong>SLAM</strong>. J’aime créer des sites web, développer des applications et apprendre de nouvelles technologies.</p>
-        <p class="mt-4 text-lg leading-relaxed text-gray-400">Mon objectif est de devenir développeur full-stack et de continuer à évoluer dans le domaine du numérique.</p>
-      </div>
+  </div>
+  <aside class="hero-card">
+    <div class="avatar">C.</div>
+    <h3>Étudiant en informatique</h3>
+    <p>Curieux, motivé et toujours prêt à apprendre de nouvelles technologies.</p>
+    <div class="quick">
+      <div><strong>BTS SIO</strong><small>Formation actuelle</small></div>
+      <div><strong>2025–2027</strong><small>Parcours prévu</small></div>
     </div>
-  </section>
+  </aside>
+</section>
 
-  <!-- EXPÉRIENCE -->
-  <section id="experience" class="bg-[#112240] py-20">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-12 text-yellow-400">Mon Parcours & Expérience</h2>
-      <div class="relative border-l-4 border-yellow-400 pl-8 space-y-12">
+<section id="apropos">
+ <div class="container">
+  <div class="section-head"><div class="eyebrow">01 · Qui suis-je ?</div><h2>À propos de <span class="accent">moi</span></h2><p>Une présentation rapide de mon profil, de mes motivations et de mon objectif professionnel.</p></div>
+  <div class="about-layout">
+   <article class="card"><div class="icon">C</div><h3>Ma présentation</h3>
+    <p>Je m'appelle Christ et je suis étudiant en BTS Services Informatiques aux Organisations (SIO). Je m'intéresse à l'informatique, aux nouvelles technologies et à la création de solutions numériques. Ma formation me permet de développer ma logique, ma capacité à résoudre des problèmes et mon autonomie.</p>
+    <p class="highlight">Mon objectif est de progresser, de gagner en expérience et de mettre mes compétences en pratique à travers des projets concrets.</p>
+   </article>
+   <article class="card"><div class="icon">↗</div><h3>Le métier que je vise</h3>
+    <p>Je souhaite m'orienter vers le métier de <strong class="accent">développeur web / développeur d'applications</strong>. Ce domaine m'intéresse pour la création de sites et d'outils numériques, la résolution de problèmes et la transformation d'une idée en solution fonctionnelle.</p>
+    <div class="tags"><span class="tag">Développement</span><span class="tag">Web</span><span class="tag">Applications</span></div>
+    <p class="note">Texte à ajuster si ton projet professionnel évolue.</p>
+   </article>
+  </div>
+ </div>
+</section>
 
-        <!-- Bac SN -->
-        <div class="bg-[#0A192F] p-6 rounded-2xl shadow hover:shadow-yellow-400/30 transition">
-          <span class="text-sm text-yellow-300 font-semibold">📅 2022 - 2025</span>
-          <h3 class="text-2xl font-bold text-yellow-400 mt-2">Baccalauréat Sciences du Numérique (SN)</h3>
-          <p class="mt-3 text-gray-300">Formation axée sur les bases de l’électronique, des réseaux et du développement.  
-          Elle m’a permis d’acquérir des compétences solides en informatique, en logique et en maintenance de systèmes.</p>
-        </div>
+<section id="parcours">
+ <div class="container">
+  <div class="section-head"><div class="eyebrow">02 · Mon évolution</div><h2>Parcours & <span class="accent">expériences</span></h2><p>Les grandes étapes de ma formation et les expériences qui construisent mon profil.</p></div>
+  <div class="timeline">
+   <article class="time-item"><time>2025 – 2027</time><div><h3>BTS Services Informatiques aux Organisations</h3><p>Formation en informatique : développement, environnement numérique, bases de données, gestion de projet et services informatiques.</p></div></article>
+   <article class="time-item"><time>2022 – 2025</time><div><h3>Baccalauréat Systèmes Numériques</h3><p>Découverte des systèmes numériques, des équipements informatiques et des réseaux.</p></div></article>
+   <article class="time-item"><time>À compléter</time><div><h3>Stage / expérience professionnelle</h3><p>Ajoute ici le nom de l'entreprise, les dates, les missions réalisées et les compétences acquises.</p></div></article>
+  </div>
+  <p class="note">Pense à remplacer ou compléter les informations selon tes dates et tes expériences exactes.</p>
+ </div>
+</section>
 
-        <!-- BTS SIO -->
-        <div class="bg-[#0A192F] p-6 rounded-2xl shadow hover:shadow-yellow-400/30 transition">
-          <span class="text-sm text-yellow-300 font-semibold">📅 2025 - 2027</span>
-          <h3 class="text-2xl font-bold text-yellow-400 mt-2">BTS Services Informatiques aux Organisations (Option SLAM)</h3>
-          <p class="mt-3 text-gray-300">Actuellement en BTS SIO, j’approfondis mes connaissances en développement logiciel, gestion de base de données, conception d’applications web et sécurité des systèmes.  
-          Je travaille également sur des projets professionnels pour préparer l’épreuve E5.</p>
-        </div>
+<section id="projets">
+ <div class="container">
+  <div class="section-head"><div class="eyebrow">03 · Ce que je réalise</div><h2>Mes <span class="accent">projets</span></h2><p>Trois exemples de fiches projet à personnaliser avec tes réalisations réelles.</p></div>
+  <div class="grid">
+   <article class="card"><div class="project-top"><div class="icon">01</div><span class="project-number">01</span></div><h3>Création d'un site web</h3><p>Conception d'un site avec une structure claire, une mise en page responsive et une navigation simple. Technologies : HTML et CSS.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Web</span></div></article>
+   <article class="card"><div class="project-top"><div class="icon">02</div><span class="project-number">02</span></div><h3>Gestion d'une bibliothèque</h3><p>Création d'une base de données pour organiser des livres, des utilisateurs et des emprunts. Technologies : SQL et modélisation.</p><div class="tags"><span class="tag">SQL</span><span class="tag">Base de données</span></div></article>
+   <article class="card"><div class="project-top"><div class="icon">03</div><span class="project-number">03</span></div><h3>Script Python</h3><p>Développement d'un petit programme permettant de traiter une saisie utilisateur et d'automatiser une tâche simple.</p><div class="tags"><span class="tag">Python</span><span class="tag">Algorithmique</span></div></article>
+  </div>
+  <p class="note">Ces projets sont des exemples de présentation : remplace-les par tes vrais travaux avant de présenter ton portfolio.</p>
+ </div>
+</section>
 
-      </div>
+<section id="competences">
+ <div class="container">
+  <div class="section-head"><div class="eyebrow">04 · Savoir-faire</div><h2>Mes <span class="accent">compétences</span></h2><p>Les compétences que je développe au cours de ma formation.</p></div>
+  <div class="grid">
+   <article class="card"><div class="icon">&lt;/&gt;</div><h3>Développement web</h3><p>Structurer une page web et travailler sa présentation.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span></div></article>
+   <article class="card"><div class="icon">DB</div><h3>Bases de données</h3><p>Organiser les données et effectuer des requêtes.</p><div class="tags"><span class="tag">SQL</span><span class="tag">Modélisation</span></div></article>
+   <article class="card"><div class="icon">Py</div><h3>Programmation</h3><p>Écrire des instructions, utiliser des conditions et créer des fonctions.</p><div class="tags"><span class="tag">Python</span><span class="tag">Algorithmique</span></div></article>
+  </div>
+  <p class="note">Modifie ces trois blocs selon tes compétences et ton niveau réel.</p>
+ </div>
+</section>
+
+<!-- SECTION E5 MODIFIÉE -->
+<section id="e5">
+ <div class="container">
+  <div class="section-head">
+   <div class="eyebrow">05 · BTS SIO</div>
+   <h2>Comprendre l'épreuve <span class="accent">E5</span></h2>
+   <p>Support et mise à disposition de services informatiques.</p>
+  </div>
+
+  <article class="card">
+   <h3>1. Présentation de l'épreuve orale E5</h3>
+   <p>L'épreuve E5 est une épreuve professionnelle du BTS SIO. Elle évalue les compétences du bloc 1 intitulé « Support et mise à disposition de services informatiques ». Elle permet au candidat de présenter son parcours de professionnalisation et les réalisations effectuées pendant sa formation.</p>
+   <p>Le candidat s'appuie sur un dossier numérique de type portfolio. Ce dossier présente ses réalisations professionnelles et explique les compétences mobilisées pour chacune d'elles.</p>
+
+   <div class="info-grid">
+    <div class="info"><strong>Durée totale</strong>40 minutes à l'oral.</div>
+    <div class="info"><strong>Présentation</strong>10 minutes maximum pour présenter son parcours et ses réalisations.</div>
+    <div class="info"><strong>Entretien</strong>30 minutes d'échange avec le jury.</div>
+    <div class="info"><strong>Coefficient</strong>Coefficient 4.</div>
+   </div>
+
+   <h3 style="margin-top:30px">2. Déroulement de l'épreuve</h3>
+   <div class="steps">
+    <div class="step"><div><b>Présentation du parcours</b><br><span style="color:var(--muted)">Le candidat présente sa formation, ses expériences et son évolution professionnelle.</span></div></div>
+    <div class="step"><div><b>Présentation des réalisations</b><br><span style="color:var(--muted)">Il explique les projets réalisés, les outils utilisés, les difficultés rencontrées et les solutions apportées.</span></div></div>
+    <div class="step"><div><b>Entretien avec le jury</b><br><span style="color:var(--muted)">Le jury pose des questions pour vérifier la compréhension des projets et les compétences acquises.</span></div></div>
+   </div>
+
+   <h3 style="margin-top:30px">3. Les six compétences évaluées</h3>
+   <p>L'épreuve E5 porte sur les six compétences du bloc 1 du BTS SIO. Les réalisations présentées dans le portfolio doivent permettre de montrer leur acquisition.</p>
+
+   <div class="grid" style="margin-top:20px">
+    <article class="card">
+     <div class="icon">B1.1</div>
+     <h3>Gérer le patrimoine informatique</h3>
+     <p>Recenser les ressources informatiques, gérer les équipements, les logiciels, les accès et les sauvegardes.</p>
+    </article>
+    <article class="card">
+     <div class="icon">B1.2</div>
+     <h3>Répondre aux incidents et aux demandes</h3>
+     <p>Identifier un problème informatique, accompagner un utilisateur et apporter une solution adaptée.</p>
+    </article>
+    <article class="card">
+     <div class="icon">B1.3</div>
+     <h3>Développer la présence en ligne</h3>
+     <p>Créer ou améliorer la présence numérique d'une organisation, par exemple avec un site web.</p>
+    </article>
+    <article class="card">
+     <div class="icon">B1.4</div>
+     <h3>Travailler en mode projet</h3>
+     <p>Organiser un projet, définir les étapes, répartir les tâches et suivre son avancement.</p>
+    </article>
+    <article class="card">
+     <div class="icon">B1.5</div>
+     <h3>Mettre à disposition un service informatique</h3>
+     <p>Préparer, déployer et vérifier un service informatique pour qu'il puisse être utilisé.</p>
+    </article>
+    <article class="card">
+     <div class="icon">B1.6</div>
+     <h3>Organiser son développement professionnel</h3>
+     <p>Développer ses compétences, suivre les évolutions informatiques et construire son parcours professionnel.</p>
+    </article>
+   </div>
+
+   <h3 style="margin-top:32px">4. Le tableau de synthèse des compétences</h3>
+   <p>Le tableau de synthèse est un document officiel qui récapitule l'ensemble des réalisations professionnelles présentées dans le portfolio. Il permet au jury de repérer rapidement les projets réalisés et les compétences du bloc 1 mobilisées.</p>
+
+   <div class="info-grid">
+    <div class="info"><strong>Réalisation professionnelle</strong>Le nom ou l'intitulé du projet présenté.</div>
+    <div class="info"><strong>Période</strong>La date ou la période pendant laquelle le projet a été réalisé.</div>
+    <div class="info"><strong>Cadre de réalisation</strong>Le contexte du projet : formation, stage, entreprise ou projet personnel.</div>
+    <div class="info"><strong>Compétences mobilisées</strong>Les compétences B1.1 à B1.6 travaillées pendant la réalisation.</div>
+   </div>
+
+   <h3 style="margin-top:30px">Exemple simplifié de tableau de synthèse</h3>
+   <p>Voici un exemple pour comprendre comment associer une réalisation aux compétences correspondantes. Ce tableau est illustratif : il ne remplace pas le modèle officiel.</p>
+
+   <div style="overflow-x:auto;margin-top:18px">
+    <table style="width:100%;border-collapse:collapse;min-width:650px;text-align:left">
+     <thead>
+      <tr style="background:rgba(245,200,76,.13);color:var(--gold)">
+       <th style="padding:13px;border:1px solid var(--line)">Réalisation</th>
+       <th style="padding:13px;border:1px solid var(--line)">Période</th>
+       <th style="padding:13px;border:1px solid var(--line)">B1.1</th>
+       <th style="padding:13px;border:1px solid var(--line)">B1.2</th>
+       <th style="padding:13px;border:1px solid var(--line)">B1.3</th>
+       <th style="padding:13px;border:1px solid var(--line)">B1.4</th>
+       <th style="padding:13px;border:1px solid var(--line)">B1.5</th>
+       <th style="padding:13px;border:1px solid var(--line)">B1.6</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td style="padding:13px;border:1px solid var(--line)">Création d'un site web</td>
+       <td style="padding:13px;border:1px solid var(--line)">2026</td>
+       <td style="padding:13px;border:1px solid var(--line)">—</td>
+       <td style="padding:13px;border:1px solid var(--line)">—</td>
+       <td style="padding:13px;border:1px solid var(--line);color:var(--gold)">X</td>
+       <td style="padding:13px;border:1px solid var(--line);color:var(--gold)">X</td>
+       <td style="padding:13px;border:1px solid var(--line)">—</td>
+       <td style="padding:13px;border:1px solid var(--line)">—</td>
+      </tr>
+      <tr>
+       <td style="padding:13px;border:1px solid var(--line)">Installation d'un poste</td>
+       <td style="padding:13px;border:1px solid var(--line)">2026</td>
+       <td style="padding:13px;border:1px solid var(--line);color:var(--gold)">X</td>
+       <td style="padding:13px;border:1px solid var(--line);color:var(--gold)">X</td>
+       <td style="padding:13px;border:1px solid var(--line)">—</td>
+       <td style="padding:13px;border:1px solid var(--line)">—</td>
+       <td style="padding:13px;border:1px solid var(--line);color:var(--gold)">X</td>
+       <td style="padding:13px;border:1px solid var(--line)">—</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+
+   <p class="note">Le modèle officiel du tableau de synthèse est disponible sur le site du SIEC, dans les documents de la session 2026. Il faut utiliser le modèle correspondant à sa session d'examen.</p>
+
+   <h3 style="margin-top:30px">5. Les documents à préparer</h3>
+   <div class="steps">
+    <div class="step"><div><b>Le portfolio</b><br><span style="color:var(--muted)">Il présente le parcours de professionnalisation et les réalisations professionnelles.</span></div></div>
+    <div class="step"><div><b>Le tableau de synthèse</b><br><span style="color:var(--muted)">Il récapitule les réalisations et les compétences mobilisées.</span></div></div>
+    <div class="step"><div><b>Les justificatifs de stage ou d'expérience</b><br><span style="color:var(--muted)">Ils permettent de justifier les périodes réalisées en entreprise, selon la situation du candidat.</span></div></div>
+   </div>
+
+   <h3 style="margin-top:30px">Sources officielles</h3>
+   <div class="source-list">
+    <a href="https://siec.education.fr/candidats/docutheque/bts-services-informatiques-aux-organisations-sio-session-2026" target="_blank" rel="noopener">SIEC — Épreuve orale E5 et modèle officiel du tableau de synthèse, session 2026</a>
+    <a href="https://www.legifrance.gouv.fr/loda/id/JORFTEXT000038529532" target="_blank" rel="noopener">Légifrance — Référentiel officiel du BTS SIO et compétences du bloc 1</a>
+   </div>
+  </article>
+ </div>
+</section>
+
+<!-- SECTION VEILLE TECHNOLOGIQUE MODIFIÉE -->
+<section id="veille">
+ <div class="container">
+  <div class="section-head">
+   <div class="eyebrow">06 · Rester informé</div>
+   <h2>Veille <span class="accent">technologique</span></h2>
+   <p>Comprendre les évolutions du numérique pour actualiser ses connaissances et développer ses compétences professionnelles.</p>
+  </div>
+
+  <div class="about-layout">
+   <article class="card">
+    <div class="icon">⌕</div>
+    <h3>1. Définition de la veille technologique</h3>
+    <p>La veille technologique consiste à rechercher, collecter, vérifier et suivre régulièrement les informations concernant les nouveautés et les évolutions technologiques. Elle permet de rester informé des innovations, des nouveaux logiciels, des outils informatiques et des menaces numériques.</p>
+    <p class="highlight">Exemple : suivre les actualités sur l'intelligence artificielle, la cybersécurité, les langages de programmation ou les nouvelles technologies réseau.</p>
+   </article>
+
+   <article class="card">
+    <div class="icon">↗</div>
+    <h3>2. Pourquoi est-elle importante dans mon futur métier ?</h3>
+    <p>Dans mon futur métier de développeur web ou d'applications, la veille technologique est importante car le secteur informatique évolue constamment. De nouveaux langages, frameworks, logiciels et outils apparaissent régulièrement.</p>
+    <p>Elle me permet de :</p>
+    <div class="steps">
+     <div class="step"><div><b>Rester à jour</b><br><span style="color:var(--muted)">Connaître les nouvelles technologies et les évolutions du développement.</span></div></div>
+     <div class="step"><div><b>Améliorer mes compétences</b><br><span style="color:var(--muted)">Apprendre de nouvelles méthodes et découvrir de nouveaux outils.</span></div></div>
+     <div class="step"><div><b>Renforcer la sécurité</b><br><span style="color:var(--muted)">Être informé des failles de sécurité et des bonnes pratiques.</span></div></div>
+     <div class="step"><div><b>Faire les bons choix techniques</b><br><span style="color:var(--muted)">Choisir des technologies adaptées aux besoins des utilisateurs et des entreprises.</span></div></div>
     </div>
-  </section>
+   </article>
+  </div>
 
-  <!-- PROJETS -->
-  <section id="projects" class="py-20 bg-[#0A192F]">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-10 text-yellow-400">Mes Projets</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-[#112240] rounded-2xl shadow-lg hover:shadow-yellow-500/30 transition p-6">
-          <img src="https://via.placeholder.com/400x200" alt="Projet 1" class="rounded-xl mb-4 border border-yellow-400/30">
-          <h3 class="text-xl font-semibold mb-2 text-yellow-300">Projet 1 – Application Web</h3>
-          <p class="text-gray-400 mb-4">Application PHP/MySQL avec tableau de bord administrateur et espace utilisateurRéalisation d’un site web collaboratif dans le cadre du BTS : conception d’un site de présentation d’entreprise avec pages dynamiques et design responsive. Ce projet m’a permis de mieux comprendre la gestion d’équipe, la répartition des tâches et l’organisation d’un projet complet..</p>
-        </div>
-        <div class="bg-[#112240] rounded-2xl shadow-lg hover:shadow-yellow-500/30 transition p-6">
-          <img src="https://via.placeholder.com/400x200" alt="Projet 2" class="rounded-xl mb-4 border border-yellow-400/30">
-          <h3 class="text-xl font-semibold mb-2 text-yellow-300">Projet 2 – Site Vitrine</h3>
-          <p class="text-gray-400 mb-4">Création d’un site vitrine responsive en HTML, CSS et JavaScript pour une entreprise locale.</p>
-        </div>
-        <div class="bg-[#112240] rounded-2xl shadow-lg hover:shadow-yellow-500/30 transition p-6">
-          <img src="https://via.placeholder.com/400x200" alt="Projet 3" class="rounded-xl mb-4 border border-yellow-400/30">
-          <h3 class="text-xl font-semibold mb-2 text-yellow-300">Projet 3 – API Python</h3>
-          <p class="text-gray-400 mb-4">Développement d’une API REST en Python Flask pour gérer des données utilisateurs.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <article class="card" style="margin-top:20px">
+   <h3>3. Les méthodes pour réaliser une veille technologique</h3>
+   <p>Pour effectuer une veille efficace, il faut suivre une méthode organisée :</p>
+   <div class="steps">
+    <div class="step"><div><b>Définir un sujet de veille</b><br><span style="color:var(--muted)">Choisir un thème précis : cybersécurité, intelligence artificielle, développement web ou réseaux.</span></div></div>
+    <div class="step"><div><b>Identifier des sources fiables</b><br><span style="color:var(--muted)">Sélectionner des sites spécialisés, des organismes officiels, des blogs techniques et des newsletters.</span></div></div>
+    <div class="step"><div><b>Collecter les informations</b><br><span style="color:var(--muted)">Utiliser des alertes, des flux RSS, des moteurs de recherche et les réseaux professionnels.</span></div></div>
+    <div class="step"><div><b>Analyser et vérifier les informations</b><br><span style="color:var(--muted)">Vérifier la fiabilité de la source, la date de publication et comparer plusieurs informations.</span></div></div>
+    <div class="step"><div><b>Trier et organiser les résultats</b><br><span style="color:var(--muted)">Classer les informations par thème et conserver les éléments utiles.</span></div></div>
+    <div class="step"><div><b>Diffuser une synthèse</b><br><span style="color:var(--muted)">Présenter les informations importantes dans un document ou un espace de partage.</span></div></div>
+   </div>
+  </article>
 
-  <!-- COMPÉTENCES -->
-  <section id="skills" class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-bold text-center mb-10 text-yellow-400">Compétences</h2>
-    <div class="grid md:grid-cols-3 gap-6 text-center">
-      <div class="bg-[#0A192F] rounded-2xl shadow p-6 hover:shadow-yellow-500/30 transition">
-        <h3 class="font-semibold text-xl mb-2 text-yellow-300">Développement Web</h3>
-        <p class="text-gray-400 mb-2">• Maîtrise du HTML5, CSS3 et JavaScript</p>
-        <p class="text-gray-400 mb-2">• Développement de sites dynamiques en PHP/MySQL</p>
-        <p class="text-gray-400">• Utilisation de frameworks (Tailwind, Bootstrap)</p>
-      </div>
-      <div class="bg-[#0A192F] rounded-2xl shadow p-6 hover:shadow-yellow-500/30 transition">
-        <h3 class="font-semibold text-xl mb-2 text-yellow-300">Programmation</h3>
-        <p class="text-gray-400 mb-2">• Développement en Python, Java, C#</p>
-        <p class="text-gray-400 mb-2">• Gestion de bases de données avec SQL</p>
-        <p class="text-gray-400">• Utilisation de Git/GitHub pour le versionnement</p>
-      </div>
-      <div class="bg-[#0A192F] rounded-2xl shadow p-6 hover:shadow-yellow-500/30 transition">
-        <h3 class="font-semibold text-xl mb-2 text-yellow-300">Systèmes & Réseaux</h3>
-        <p class="text-gray-400 mb-2">• Configuration de serveurs Linux & Windows</p>
-        <p class="text-gray-400 mb-2">• Mise en place de machines virtuelles (VMware, VirtualBox)</p>
-        <p class="text-gray-400">• Sécurité réseau et dépannage</p>
-      </div>
-    </div>
-  </section>
+  <div style="margin-top:32px">
+   <div class="section-head">
+    <div class="eyebrow">Les différents types de veille</div>
+    <h2>4. Les types de veille et leurs <span class="accent">outils</span></h2>
+    <p>Il existe plusieurs types de veille. Chacun permet de surveiller un domaine particulier et nécessite des outils adaptés.</p>
+   </div>
 
-  <!-- ÉPREUVE E5 -->
-  <section id="e5" class="bg-[#112240] py-20">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-10 text-yellow-400">Épreuve E5 – Conception et Maintenance de Solutions Informatiques</h2>
-      <p class="text-lg text-gray-300 leading-relaxed text-center max-w-4xl mx-auto">
-        L’épreuve E5 du BTS SIO évalue la capacité de l’étudiant à <strong>concevoir, développer et maintenir une solution logicielle</strong> répondant à un besoin réel d’entreprise.  
-        Elle repose sur deux projets professionnels menés durant la formation (stages ou projets personnels), accompagnés de documentations techniques et d’une soutenance orale.
-      </p>
-    </div>
-  </section>
+   <div class="grid">
+    <article class="card">
+     <div class="icon">01</div>
+     <h3>Veille technologique</h3>
+     <p>Surveiller les innovations, les nouveaux logiciels, les langages de programmation, les matériels et les évolutions informatiques.</p>
+     <p style="margin-top:14px"><strong class="accent">Outils adaptés :</strong></p>
+     <div class="tags"><span class="tag">Feedly</span><span class="tag">GitHub</span><span class="tag">Google Alerts</span><span class="tag">Reddit</span></div>
+    </article>
 
-  <!-- VEILLE TECHNOLOGIQUE -->
-  <section id="veille" class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-bold text-center mb-10 text-yellow-400">Veille Technologique</h2>
-    <div class="bg-[#0A192F] rounded-2xl shadow-lg p-6 text-gray-300 max-w-4xl mx-auto">
-      <h3 class="text-2xl text-yellow-300 font-semibold mb-4">Sujet : L’intelligence artificielle dans le développement web</h3>
-      <p class="mb-3">L’IA révolutionne la manière de concevoir et d’optimiser les sites web. Des outils comme ChatGPT, GitHub Copilot ou Figma AI permettent d’automatiser certaines tâches et d’améliorer la productivité.</p>
-      <p class="mb-3">Cette veille m’a permis de mieux comprendre l’impact de l’IA sur les métiers du développement et d’apprendre à en tirer parti dans mes projets.</p>
-      <p>Sources principales : <strong>ZDNet, Journal du Net, GitHub Blog, OpenAI</strong>.</p>
-    </div>
-  </section>
+    <article class="card">
+     <div class="icon">02</div>
+     <h3>Veille concurrentielle</h3>
+     <p>Observer les entreprises concurrentes, leurs services, leurs produits, leurs innovations et leurs stratégies.</p>
+     <p style="margin-top:14px"><strong class="accent">Outils adaptés :</strong></p>
+     <div class="tags"><span class="tag">Similarweb</span><span class="tag">SEMrush</span><span class="tag">Google Alerts</span><span class="tag">LinkedIn</span></div>
+    </article>
 
-  <!-- CONTACT -->
-  <section id="contact" class="bg-gradient-to-r from-[#003566] to-[#001D3D] text-white py-20">
-    <div class="max-w-3xl mx-auto text-center px-6">
-      <h2 class="text-3xl font-bold mb-6 text-yellow-400">Contact</h2>
-      <p class="mb-4 text-lg text-gray-200">Tu veux me contacter pour un stage, une alternance ou un projet ?</p>
-      <p class="mb-2 text-lg">📧 <a href="mailto:cekoffi2007@gmail.com" class="text-yellow-300 hover:underline">cekoffi2007@gmail.com</a></p>
-      <p class="mb-8 text-lg">📞 06 50 61 38 94</p>
-      <a href="mailto:cekoffi2007@gmail.com" class="bg-yellow-400 text-[#001F3F] px-6 py-3 rounded-full font-semibold hover:bg-yellow-300 transition">Me contacter</a>
-      
-      <!-- BOUTON CV -->
-      <div class="mt-6">
-        <a href="CV_Cekoffi.pdf" download class="bg-yellow-400 text-[#001F3F] px-6 py-3 rounded-full font-semibold hover:bg-yellow-300 transition">
-          Télécharger mon CV
-        </a>
-      </div>
-    </div>
-  </section>
+    <article class="card">
+     <div class="icon">03</div>
+     <h3>Veille juridique et réglementaire</h3>
+     <p>Suivre les lois, les règlements et les obligations qui concernent l'informatique, les données personnelles et la sécurité.</p>
+     <p style="margin-top:14px"><strong class="accent">Outils adaptés :</strong></p>
+     <div class="tags"><span class="tag">Légifrance</span><span class="tag">CNIL</span><span class="tag">EUR-Lex</span></div>
+    </article>
 
-  <!-- FOOTER -->
-  <footer class="bg-[#0D1B2A] text-gray-400 text-center py-6 border-t border-yellow-400/20">
-    <p>&copy; 2025 – Mon Portfolio BTS SIO. Tous droits réservés.</p>
-  </footer>
+    <article class="card">
+     <div class="icon">04</div>
+     <h3>Veille commerciale</h3>
+     <p>Surveiller les besoins des clients, les tendances du marché, les prix et les nouvelles attentes des utilisateurs.</p>
+     <p style="margin-top:14px"><strong class="accent">Outils adaptés :</strong></p>
+     <div class="tags"><span class="tag">Google Trends</span><span class="tag">Statista</span><span class="tag">LinkedIn</span></div>
+    </article>
 
+    <article class="card">
+     <div class="icon">05</div>
+     <h3>Veille informationnelle</h3>
+     <p>Collecter et suivre les actualités générales et les informations importantes dans un domaine précis.</p>
+     <p style="margin-top:14px"><strong class="accent">Outils adaptés :</strong></p>
+     <div class="tags"><span class="tag">Google Actualités</span><span class="tag">Feedly</span><span class="tag">Inoreader</span></div>
+    </article>
+
+    <article class="card">
+     <div class="icon">06</div>
+     <h3>Veille e-réputation</h3>
+     <p>Surveiller l'image et la réputation d'une entreprise ou d'une organisation sur Internet et les réseaux sociaux.</p>
+     <p style="margin-top:14px"><strong class="accent">Outils adaptés :</strong></p>
+     <div class="tags"><span class="tag">Mention</span><span class="tag">Google Alerts</span><span class="tag">Réseaux sociaux</span></div>
+    </article>
+   </div>
+  </div>
+
+  <article class="card" style="margin-top:22px">
+   <h3>5. Exemple concret de ma veille technologique</h3>
+   <p>Je peux choisir la cybersécurité comme sujet de veille. Pour cela, je consulte régulièrement les actualités de l'ANSSI et de la CNIL, je crée des alertes avec Google Alerts et je rassemble les informations importantes dans un document de synthèse.</p>
+   <p>Je peux ainsi suivre les nouvelles cyberattaques, les failles de sécurité, les mises à jour et les recommandations pour protéger les systèmes informatiques.</p>
+   <p class="highlight">Cette méthode me permet de développer mes connaissances et de mieux comprendre les enjeux de sécurité dans mon futur métier.</p>
+  </article>
+
+  <article class="card" style="margin-top:20px">
+   <h3>Sources et outils pour approfondir</h3>
+   <p>Voici quelques ressources fiables pour suivre l'actualité informatique et apprendre à organiser une veille.</p>
+   <div class="source-list">
+    <a href="https://www.portail-ie.fr/ressources/lexique/veille/" target="_blank" rel="noopener">Portail de l'intelligence économique — Définition de la veille</a>
+    <a href="https://www.francenum.gouv.fr/" target="_blank" rel="noopener">France Num — Ressources sur la transformation numérique</a>
+    <a href="https://www.ssi.gouv.fr/" target="_blank" rel="noopener">ANSSI — Actualités et ressources en cybersécurité</a>
+    <a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL — Données personnelles et réglementation</a>
+    <a href="https://feedly.com/" target="_blank" rel="noopener">Feedly — Agrégateur de flux RSS</a>
+    <a href="https://www.google.com/alerts" target="_blank" rel="noopener">Google Alerts — Création d'alertes</a>
+   </div>
+  </article>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="container">
+  <div class="section-head"><div class="eyebrow">07 · Parlons ensemble</div><h2>Me <span class="accent">contacter</span></h2><p>Tu souhaites me contacter pour un stage, une alternance ou un projet ? Je serai ravi d'échanger avec toi.</p></div>
+  <div class="contact">
+   <div class="contact-panel"><h3>Construisons quelque chose ensemble.</h3><p>Je reste disponible pour discuter d'une opportunité, présenter mes projets ou échanger autour de l'informatique.</p>
+    <div class="contact-line"><b>E-mail</b>christ.contact@example.com</div>
+    <div class="contact-line"><b>Téléphone</b>06 00 00 00 00</div>
+    <div class="contact-line"><b>Localisation</b>Paris, France</div>
+    <div class="actions"><a class="btn primary" href="mailto:christ.contact@example.com?subject=Prise%20de%20contact">M'envoyer un e-mail ↗</a></div>
+    <p class="note">Coordonnées fictives à remplacer par tes vraies coordonnées avant publication.</p>
+   </div>
+   <div class="card"><div class="icon">CV</div><h3>Mon curriculum vitæ</h3><p>Retrouve mon parcours, mes formations et mes expériences dans mon CV au format PDF.</p>
+    <div class="actions"><a class="btn primary" href="cv-christ.pdf" target="_blank" rel="noopener">Consulter mon CV ↗</a></div>
+    <p class="note">Place ton fichier CV dans le même dossier que ce site et nomme-le exactement <b>cv-christ.pdf</b>. Je pourrai aussi adapter ce lien quand tu m'enverras ton CV.</p>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+<footer><div class="container"><span>© 2026 Christ — Portfolio BTS SIO</span><span>Conçu avec passion · HTML / CSS / JavaScript</span></div></footer>
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const nav=document.getElementById('navlinks');
+menuBtn.addEventListener('click',()=>nav.classList.toggle('open'));
+document.querySelectorAll('.navlinks a').forEach(link=>link.addEventListener('click',()=>nav.classList.remove('open')));
+const sections=[...document.querySelectorAll('main section[id]')];
+const links=[...document.querySelectorAll('.navlinks a')];
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id));}}),{rootMargin:'-35% 0px -55% 0px'});
+sections.forEach(section=>observer.observe(section));
+</script>
 </body>
 </html>
+
 
